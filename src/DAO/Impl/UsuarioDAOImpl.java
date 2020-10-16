@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package DAO.Impl;
 
 import DAO.DAOException;
@@ -10,7 +5,6 @@ import DAO.UsuarioDAO;
 import MODELO.Clases.Usuarios;
 import MODELO.Conexion;
 import java.util.List;
-
 
 public class UsuarioDAOImpl extends Conexion implements UsuarioDAO {
 

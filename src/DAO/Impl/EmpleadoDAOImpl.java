@@ -1,10 +1,5 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package DAO.Impl;
-
+import MODELO.Clases.*;
 import DAO.DAOException;
 import DAO.EmpleadoDAO;
 import MODELO.Clases.Empleado;
@@ -14,20 +9,13 @@ import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-
-/**
- *
- * @author EQUINOX
- */
 public class EmpleadoDAOImpl extends Conexion implements EmpleadoDAO{
 
-    final String INSERT = "INSERT INTO EMPLEADO(COD,DEPARTAMENTO,CEDULA,NOMBRES,APELLISDOS,FECHA_NAC,DIRECCION,TELEFONO,CARGO,FECHA_INGRE) values(?,?,?,?,?,?,?,?,?,?)";
-    final String UPDATE = "UPDATE EMPLEADO SET COD = ?,DEPARTAMENTO = ?,CEDULA = ?,NOMBRES = ?,APELLISDOS = ?,FECHA_NAC = ?,DIRECCION = ?,TELEFONO = ?,CARGO = ?,FECHA_INGRE = ? where COD=? ";
-    final String DELETE = "DELETE FROM EMPLEADO where COD=? ";
     final String GETALL = "SELECT COD,DEPARTAMENTO,CEDULA,NOMBRES,APELLISDOS,FECHA_NAC,DIRECCION,TELEFONO,CARGO,FECHA_INGRE FROM EMPLEADO";
     final String GET0NE = "SELECT COD,DEPARTAMENTO,CEDULA,NOMBRES,APELLISDOS,FECHA_NAC,DIRECCION,TELEFONO,CARGO,FECHA_INGRE FROM EMPLEADO where COD=?";
     private Connection cn;
@@ -35,88 +23,121 @@ public class EmpleadoDAOImpl extends Conexion implements EmpleadoDAO{
     private ResultSet rs;
     @Override
     public void insertar(Empleado a) throws DAOException {
+        boolean val = false;
+        Connection cn = null;
+        Statement stn = null;
+        String sql = "INSERT INTO EMPLEADO(COD,DEPARTAMENTO,CEDULA,NOMBRES,APELLIDOS,FECHA_NAC,DIRECCION,TELEFONO,CARGO,FECHA_INGRE) values (" + 
+                a.getCod()+ ",'" + a.getDepartamento()
+                + "','" + a.getCedula()+ "','" + a.getNombre() + "','" + a.getApellidos() + "',to_date('"+ a.getFecha_nac()+"','dd/mm/yyyy'),'"+a.getDireccion()
+                + "','"+a.getTelefono()+ "','" + a.getCargo() + "',to_date('"+ a.getFecha_ingre()+"','dd/mm/yyyy'),'" +"')";
         try {
             this.conectar();
-            st=cn.prepareStatement(INSERT);
-            st.setInt(1, a.getCod());
-            st.setInt(2, a.getDepartamento());
-            st.setString(3,a.getCedula());
-            st.setString(4,a.getNombre());
-            st.setString(5,a.getApellidos());
-            st.setString(6,a.getFecha_nac());
-            st.setString(7,a.getDireccion());
-            st.setString(8,a.getTelefono());
-            st.setString(9,a.getCargo());
-            st.setString(10,a.getFecha_ingre());
-            
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(EmpleadoDAOImpl.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (SQLException ex) {
-            Logger.getLogger(EmpleadoDAOImpl.class.getName()).log(Level.SEVERE, null, ex);
+            con = this.getCon();
+            stn = con.createStatement();
+            stn.execute(sql);
+            val = true;
+            //con.close();
+        } catch (Exception ex) {
+            Logger.getLogger(ClienteDAOImpl.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
     @Override
     public void modificar(Empleado a) throws DAOException {
+        boolean val = false;
+        Connection cn = null;
+        Statement st = null;
+        String sql = "UPDATE EMPLEADO SET COD = "+a.getCod()+",DEPARTAMENTO = '"+a.getDepartamento()
+                +"',CEDULA = '"+a.getCedula()+"',NOMBRES = '"+a.getNombre()+"',APELLIDOS = '"+a.getApellidos()+"',FECHA_NAC = to_date('"+ a.getFecha_nac()
+                +"','dd/mm/yyyy'),DIRECCION = '"+a.getDireccion()+"',TELEFONO = '"+a.getTelefono()+"',CARGO = '"+a.getCargo()+"',FECHA_INGRE = to_date('"+ a.getFecha_ingre()
+                +"','dd/mm/yyyy')"+"' where COD= "+a.getCod()+"";
         try {
-            this.conectar();
-            st=cn.prepareStatement(UPDATE);
-            st.setInt(1, a.getCod());
-            st.setInt(2, a.getDepartamento());
-            st.setString(3,a.getCedula());
-            st.setString(4,a.getNombre());
-            st.setString(5,a.getApellidos());
-            st.setString(6,a.getFecha_nac());
-            st.setString(7,a.getDireccion());
-            st.setString(8,a.getTelefono());
-            st.setString(9,a.getCargo());
-            st.setString(10,a.getFecha_ingre());
-            
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(EmpleadoDAOImpl.class.getName()).log(Level.SEVERE, null, ex);
+            this.conectar(); //solo 1 vez
+            cn = this.getCon();
+            st = cn.createStatement();
+            st.execute(sql);
+            st.close();
+            val = true;
         } catch (SQLException ex) {
-            Logger.getLogger(EmpleadoDAOImpl.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ClienteDAOImpl.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(ClienteDAOImpl.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
     @Override
     public void eliminar(Empleado a) throws DAOException {
-        
+        boolean val = false;
+        Connection cn = null;
+        Statement st = null;
+        String sql = "DELETE FROM EMPLEADO where COD= " + a.getCod();
+        try {
+            this.conectar(); //1 sola vez
+            cn = this.getCon();
+            st = cn.createStatement();
+            st.execute(sql);
+            st.close();
+            val = true;
+        } catch (Exception e) {
+            
+        }
     }
 
     @Override
     public List<Empleado> obtenerTodos() throws DAOException {
-        List<Empleado> emp= new ArrayList<>();
-        try{
-            st=cn.prepareStatement(GETALL);
-            rs=st.executeQuery();
-            while(rs.next()){
-                emp.add(convertir(rs));
+        List<Empleado> listDep = new ArrayList<>();
+        Connection cn = null;
+        Statement stn = null;
+        ResultSet rs = null;
+        String sql = "SELECT COD,DEPARTAMENTO,CEDULA,NOMBRES,APELLIDOS,FECHA_NAC,DIRECCION,TELEFONO,CARGO,FECHA_INGRE FROM EMPLEADO";
+        try {
+            this.conectar();
+            cn = this.getCon();
+            stn = cn.createStatement();
+            rs = stn.executeQuery(sql);
+            if (rs != null) {
+                while (rs.next()) {
+                    Empleado e = new Empleado();
+                    e.setCod(rs.getInt(1));
+                    e.setDepartamento(rs.getInt(2));
+                    e.setCedula(rs.getString(3));
+                    e.setNombre(rs.getString(4));
+                    e.setFecha_nac(rs.getString(5));
+                    e.setDireccion(rs.getString(6));
+                    e.setTelefono(rs.getString(7));
+                    e.setCargo(rs.getString(8));
+                    e.setFecha_ingre(rs.getString(9));
+                    listDep.add(e);
+                }
+                stn.close();
+                rs.close();
             }
-        }catch (SQLException ex) {
-            Logger.getLogger(EmpleadoDAOImpl.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (Exception ex) {
+            Logger.getLogger(ClienteDAOImpl.class.getName()).log(Level.SEVERE, null, ex);
         }
-        return emp;
+        for (int i = 0; i < listDep.size(); i++) {
+            System.out.println(listDep.get(i));
+        }
+        return listDep;
     }
 
     @Override
     public Empleado obtener(Integer id) throws DAOException {
+        /*boolean val = false;
+        Connection cn = null;
+        Statement st = null;
+        String sql = "SELECT*FROM EMPLEADO where COD= " + id;
+        try {
+            this.conectar(); //1 sola vez
+            cn = this.getCon();
+            st = cn.createStatement();
+            st.execute(sql);
+            st.close();
+            val = true;
+        } catch (Exception e) {
+            
+        }*/
         return null;
     }
-    
-    private Empleado convertir(ResultSet rs) throws SQLException { 
-        int codigo = rs.getInt("COD");
-        int depar = rs.getInt("DEPARTAMENTO");
-        String ced = rs.getString("CEDULA");
-        String nom = rs.getString("NOMBRES");
-        String ape = rs.getString("APELLIDOS");
-        String f_nacimieno = rs.getString("FECHA_NAC");
-        String direc = rs.getString("DIRECCION");
-        String tele = rs.getString("TELEFONO");
-        String cargo = rs.getString("CARGO");
-        String fing = rs.getString("FECHA_INGRE");
-        Empleado reg = new Empleado(codigo, depar, ced,nom,ape,f_nacimieno,direc,tele,cargo,fing);
-        reg.setCod(rs.getInt("codigo"));//revisar
-        return reg;
-    }
+
 }

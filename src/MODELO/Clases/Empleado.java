@@ -1,14 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package MODELO.Clases;
-
-/**
- *
- * @author EQUINOX
- */
 public class Empleado {
     private int cod;
     private int departamento;
@@ -21,6 +11,9 @@ public class Empleado {
     private String telefono;
     private String cargo;
     private String fecha_ingre;
+
+    public Empleado() {
+    }
 
     public Empleado(int cod, int departamento, String numero_cedula, Object rostro, String nombre, String apellidos, String fecha_nac, String direccion, String telefono, String cargo, String fecha_ingre) {
         this.cod = cod;
