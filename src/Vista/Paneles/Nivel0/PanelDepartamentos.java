@@ -32,65 +32,44 @@ public class PanelDepartamentos extends javax.swing.JPanel {
         jLabel7 = new javax.swing.JLabel();
         cajaNombrePD = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
+        JBBuscar = new javax.swing.JButton();
+        JBSalir = new javax.swing.JButton();
 
-        jLabel6.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 10)); // NOI18N
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel6.setFont(new java.awt.Font("Arial Rounded MT Bold", 1, 12)); // NOI18N
         jLabel6.setText("DEPARTAMENTOS");
+        add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 10, 130, 27));
 
         cajaCodigoPD.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cajaCodigoPDActionPerformed(evt);
             }
         });
+        add(cajaCodigoPD, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 50, 150, 30));
 
-        jLabel7.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 10)); // NOI18N
+        jLabel7.setFont(new java.awt.Font("Arial Rounded MT Bold", 1, 12)); // NOI18N
         jLabel7.setText("NOMBRE:");
+        add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 100, 90, 31));
 
         cajaNombrePD.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cajaNombrePDActionPerformed(evt);
             }
         });
+        add(cajaNombrePD, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 100, 150, 30));
 
-        jLabel8.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 10)); // NOI18N
+        jLabel8.setFont(new java.awt.Font("Arial Rounded MT Bold", 1, 12)); // NOI18N
         jLabel8.setText("CODIGO:");
+        add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 50, 90, 31));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(12, 12, 12)
-                        .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(cajaNombrePD, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(cajaCodigoPD, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(18, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(61, 61, 61))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(cajaCodigoPD, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(cajaNombrePD, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(26, 26, 26))
-        );
+        JBBuscar.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        JBBuscar.setText("Buscar");
+        add(JBBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 170, -1, -1));
+
+        JBSalir.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        JBSalir.setText("Salir");
+        add(JBSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 170, 70, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void cajaCodigoPDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cajaCodigoPDActionPerformed
@@ -103,6 +82,8 @@ public class PanelDepartamentos extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton JBBuscar;
+    private javax.swing.JButton JBSalir;
     private javax.swing.JTextField cajaCodigoPD;
     private javax.swing.JTextField cajaNombrePD;
     private javax.swing.JLabel jLabel6;

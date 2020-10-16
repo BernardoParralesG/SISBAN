@@ -27,19 +27,67 @@ public class PanelAdministrador extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 399, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 306, Short.MAX_VALUE)
-        );
+        jLabel6 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        cajaCodigoPA = new javax.swing.JTextField();
+        cajaNombrePA = new javax.swing.JTextField();
+        JBBuscar = new javax.swing.JButton();
+        JBSalir = new javax.swing.JButton();
+
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel6.setFont(new java.awt.Font("Arial Rounded MT Bold", 1, 12)); // NOI18N
+        jLabel6.setText("ADMINISTRADOR");
+        add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 20, 130, 27));
+
+        jLabel8.setFont(new java.awt.Font("Arial Rounded MT Bold", 1, 12)); // NOI18N
+        jLabel8.setText("CODIGO:");
+        add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 70, 90, 31));
+
+        jLabel7.setFont(new java.awt.Font("Arial Rounded MT Bold", 1, 12)); // NOI18N
+        jLabel7.setText("NOMBRE:");
+        add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 120, 90, 31));
+
+        cajaCodigoPA.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cajaCodigoPAActionPerformed(evt);
+            }
+        });
+        add(cajaCodigoPA, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 70, 150, 30));
+
+        cajaNombrePA.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cajaNombrePAActionPerformed(evt);
+            }
+        });
+        add(cajaNombrePA, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 120, 150, 30));
+
+        JBBuscar.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        JBBuscar.setText("Buscar");
+        add(JBBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 170, -1, -1));
+
+        JBSalir.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        JBSalir.setText("Salir");
+        add(JBSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 170, 70, -1));
     }// </editor-fold>//GEN-END:initComponents
+
+    private void cajaCodigoPAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cajaCodigoPAActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cajaCodigoPAActionPerformed
+
+    private void cajaNombrePAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cajaNombrePAActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cajaNombrePAActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton JBBuscar;
+    private javax.swing.JButton JBSalir;
+    private javax.swing.JTextField cajaCodigoPA;
+    private javax.swing.JTextField cajaNombrePA;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     // End of variables declaration//GEN-END:variables
 }

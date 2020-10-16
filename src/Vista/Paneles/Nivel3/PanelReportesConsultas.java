@@ -27,19 +27,70 @@ public class PanelReportesConsultas extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
-        );
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
+        JBConsultar = new javax.swing.JButton();
+        JBSalir = new javax.swing.JButton();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        JCodigoTran = new javax.swing.JTextField();
+
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jTable1 = new javax.swing.JTable(){
+            public boolean isCellEditable(int rowIndex, int colIndex){
+                return false;
+            }
+        };
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+
+            }
+        ));
+        jScrollPane1.setViewportView(jTable1);
+
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 180, 510, 150));
+
+        JBConsultar.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        JBConsultar.setText("Consultar");
+        JBConsultar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JBConsultarActionPerformed(evt);
+            }
+        });
+        add(JBConsultar, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 130, -1, -1));
+
+        JBSalir.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        JBSalir.setText("Salir");
+        add(JBSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 130, 70, -1));
+
+        jLabel4.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabel4.setText("CONSULTAR REPORTES");
+        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 10, 150, 30));
+
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabel1.setText("CODIGO:");
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, 60, 20));
+
+        JCodigoTran.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        add(JCodigoTran, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 60, 160, 20));
     }// </editor-fold>//GEN-END:initComponents
+
+    private void JBConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBConsultarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_JBConsultarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton JBConsultar;
+    private javax.swing.JButton JBSalir;
+    private javax.swing.JTextField JCodigoTran;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables
 }

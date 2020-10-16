@@ -27,19 +27,61 @@ public class PanelTransacciones extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
-        );
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
+        jLabel4 = new javax.swing.JLabel();
+        JBBuscar = new javax.swing.JButton();
+        JBSalir = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        JCodigoTran = new javax.swing.JTextField();
+
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jTable1 = new javax.swing.JTable(){
+            public boolean isCellEditable(int rowIndex, int colIndex){
+                return false;
+            }
+        };
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+
+            }
+        ));
+        jScrollPane1.setViewportView(jTable1);
+
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 210, 480, 150));
+
+        jLabel4.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabel4.setText("TRANSACCIONES");
+        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 10, 110, 30));
+
+        JBBuscar.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        JBBuscar.setText("Buscar");
+        add(JBBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 130, -1, -1));
+
+        JBSalir.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        JBSalir.setText("Salir");
+        add(JBSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 130, 70, -1));
+
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabel1.setText("CODIGO:");
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 70, 60, 20));
+
+        JCodigoTran.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        add(JCodigoTran, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 70, 160, 20));
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton JBBuscar;
+    private javax.swing.JButton JBSalir;
+    private javax.swing.JTextField JCodigoTran;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables
 }
