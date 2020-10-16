@@ -1,10 +1,16 @@
 package Vista;
+
+import DAO.Impl.UsuarioDAOImpl;
+import MODELO.Clases.Usuarios;
 import javax.swing.*;
+
 public class VLogin extends javax.swing.JFrame {
+
     public VLogin() {
         initComponents();
-        setSize(440,590);
+        setSize(440, 590);
     }
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -71,13 +77,28 @@ public class VLogin extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void cajaUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cajaUsuarioActionPerformed
-        
+
     }//GEN-LAST:event_cajaUsuarioActionPerformed
 
     private void JBtnIngresoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBtnIngresoActionPerformed
-        VentanaPrincipal nd = new VentanaPrincipal();
-        nd.setVisible(true);
-        dispose();
+        String contraseña = "";
+        for (int i = 0; i < cajaContrasena.getPassword().length; i++) {
+            contraseña += cajaContrasena.getPassword()[i];
+        }
+        UsuarioDAOImpl login = new UsuarioDAOImpl();
+        Usuarios usuario = new Usuarios();
+        usuario.setNombre(cajaUsuario.getText());
+        usuario.setContrasena(contraseña);
+        if (cajaUsuario.getText().equals("") || contraseña.equals("")) {
+            JOptionPane.showMessageDialog(null, "Rellene los campos");
+        } else if (login.validarSesion(usuario)) {
+            VentanaPrincipal nd = new VentanaPrincipal();
+            nd.setVisible(true);
+            dispose();
+        }else{
+            JOptionPane.showMessageDialog(null, "Usuario o contraseña incorrectos");
+        }
+
     }//GEN-LAST:event_JBtnIngresoActionPerformed
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
