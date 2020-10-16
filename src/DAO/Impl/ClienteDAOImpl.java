@@ -14,6 +14,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -74,12 +75,56 @@ public class ClienteDAOImpl extends Conexion implements ClienteDAO {
     
     @Override
     public void eliminar(ClientesSisban a) throws DAOException {
-        
+        boolean val = false;
+        Connection cn = null;
+        Statement st = null;
+        String sql = "DELETE FROM CLIENTES_SISBAN where COD_CLIENTE= " + a.getCodCliente();
+        try {
+            this.conectar(); //1 sola vez
+            cn = this.getCon();
+            st = cn.createStatement();
+            st.execute(sql);
+            st.close();
+            val = true;
+        } catch (Exception e) {
+            
+        }
     }
 
     @Override
     public List<ClientesSisban> obtenerTodos() throws DAOException {
-        return null;
+        List<ClientesSisban> listDep = new ArrayList<>();
+        Connection cn = null;
+        Statement stn = null;
+        ResultSet rs = null;
+        String sql = "SELECT COD_CLIENTE,NUMERO_CEDULA,NOMBRES,APELLIDOS,FECHA_NACIMIENTO,DIRECCION,TELEFONO FROM CLIENTES_SISBAN";
+        try {
+            this.conectar();
+            cn = this.getCon();
+            stn = cn.createStatement();
+            rs = stn.executeQuery(sql);
+            if (rs != null) {
+                while (rs.next()) {
+                    ClientesSisban d = new ClientesSisban();
+                    d.setCodCliente(rs.getInt(1));
+                    d.setNumeroCedula(rs.getString(2));
+                    d.setNombres(rs.getString(3));
+                    d.setApellidos(rs.getString(4));
+                    d.setFechaNacimiento(rs.getString(5));
+                    d.setDireccion(rs.getString(6));
+                    d.setTelefono(rs.getString(7));
+                    listDep.add(d);
+                }
+                stn.close();
+                rs.close();
+            }
+        } catch (Exception ex) {
+            Logger.getLogger(ClienteDAOImpl.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        for (int i = 0; i < listDep.size(); i++) {
+            System.out.println(listDep.get(i));
+        }
+        return listDep;
     }
 
     @Override

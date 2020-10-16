@@ -118,7 +118,9 @@ public class ClientesSisban implements Serializable {
 
     @Override
     public String toString() {
-        return "MODELO.Clases.ClientesSisban[ codCliente=" + codCliente + " ]";
+        return "codCliente=" + codCliente + ", numeroCedula=" + numeroCedula + ", nombres=" + nombres + ", apellidos=" + apellidos + ", fechaNacimiento=" + fechaNacimiento + ", direccion=" + direccion + ", telefono=" + telefono + "\n";
     }
+
+    
     
 }
