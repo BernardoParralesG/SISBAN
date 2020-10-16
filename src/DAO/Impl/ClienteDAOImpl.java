@@ -52,21 +52,23 @@ public class ClienteDAOImpl extends Conexion implements ClienteDAO {
 
     @Override
     public void modificar(ClientesSisban a) throws DAOException {
+        boolean val = false;
+        Connection cn = null;
+        Statement st = null;
+        String sql = "UPDATE CLIENTES_SISBAN SET COD_CLIENTE = "+a.getCodCliente()+",NUMERO_CEDULA = '"+a.getNumeroCedula()
+                +"',NOMBRES = '"+a.getNombres()+"',APELLIDOS = '"+a.getApellidos()+"',FECHA_NACIMIENTO = to_date('"+ a.getFechaNacimiento()
+                +"','dd/mm/yyyy'),DIRECCION = '"+a.getDireccion()+"',TELEFONO = '"+a.getTelefono()+"' where COD_CLIENTE= "+a.getCodCliente()+"";
         try {
-            this.conectar();
-            st=cn.prepareStatement(UPDATE);
-            st.setInt(1, a.getCodCliente());
-            st.setString(3,a.getNumeroCedula());
-            st.setString(4,a.getNombres());
-            st.setString(5,a.getApellidos());
-            st.setString(6,a.getFechaNacimiento());
-            st.setString(7,a.getDireccion());
-            st.setString(8,a.getTelefono());
-            
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(EmpleadoDAOImpl.class.getName()).log(Level.SEVERE, null, ex);
+            this.conectar(); //solo 1 vez
+            cn = this.getCon();
+            st = cn.createStatement();
+            st.execute(sql);
+            st.close();
+            val = true;
         } catch (SQLException ex) {
-            Logger.getLogger(EmpleadoDAOImpl.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ClienteDAOImpl.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(ClienteDAOImpl.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
     

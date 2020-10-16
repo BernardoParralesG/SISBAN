@@ -19,10 +19,11 @@ import java.util.logging.Logger;
 public class pruebas {
     public static void main(String[] args) throws ClassNotFoundException, DAOException {
         ClienteDAOImpl bd= new ClienteDAOImpl();
-        ClientesSisban cliente= new ClientesSisban(1, "999", "Victor", "parrales", "11/11/1999", "guayaquil", "09435");
+        ClientesSisban cliente= new ClientesSisban(1, "888", "VECTOR", "PARRALES", "12/12/2000", "guayaquil", "09435");
         try {
             bd.conectar();
-            bd.insertar(cliente);
+            //bd.insertar(cliente);
+            bd.modificar(cliente);
         } catch (SQLException ex) {
             Logger.getLogger(pruebas.class.getName()).log(Level.SEVERE, null, ex);
         }
