@@ -105,5 +105,10 @@ public class CuentaDAOImpl extends Conexion implements CuentaDAO {
         }
         return listDep;
     }
+
+    @Override
+    public Cuenta obtener(Integer id) throws DAOException {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
 }

@@ -51,6 +51,11 @@ public class VLogin extends javax.swing.JFrame {
         cajaContrasena.setBounds(170, 290, 180, 30);
 
         JBtnIngreso.setText("ACCEDER");
+        JBtnIngreso.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JBtnIngresoActionPerformed(evt);
+            }
+        });
         getContentPane().add(JBtnIngreso);
         JBtnIngreso.setBounds(160, 390, 90, 23);
 
@@ -60,14 +65,20 @@ public class VLogin extends javax.swing.JFrame {
         Fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Fondo.jpg"))); // NOI18N
         Fondo.setToolTipText("");
         getContentPane().add(Fondo);
-        Fondo.setBounds(-20, 0, 450, 560);
+        Fondo.setBounds(-20, -10, 450, 560);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void cajaUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cajaUsuarioActionPerformed
-
+        
     }//GEN-LAST:event_cajaUsuarioActionPerformed
+
+    private void JBtnIngresoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBtnIngresoActionPerformed
+        VentanaPrincipal nd = new VentanaPrincipal();
+        nd.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_JBtnIngresoActionPerformed
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -104,9 +115,9 @@ public class VLogin extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Fondo;
-    public static javax.swing.JButton JBtnIngreso;
-    private javax.swing.JPasswordField cajaContrasena;
-    private javax.swing.JTextField cajaUsuario;
+    public javax.swing.JButton JBtnIngreso;
+    public static javax.swing.JPasswordField cajaContrasena;
+    public static javax.swing.JTextField cajaUsuario;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;

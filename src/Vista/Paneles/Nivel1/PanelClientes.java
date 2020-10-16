@@ -7,6 +7,7 @@ import javax.swing.table.DefaultTableModel;
 public class PanelClientes extends javax.swing.JPanel {
     public PanelClientes() {
         initComponents();
+        this.setSize(629, 463);
         modeloTabla.addColumn("CODIGO");
         modeloTabla.addColumn("CEDULA");
         modeloTabla.addColumn("NOMBRES");

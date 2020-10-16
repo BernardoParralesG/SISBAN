@@ -56,6 +56,7 @@ public class PanelAdministrador extends javax.swing.JPanel {
         });
         add(cajaCodigoPA, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 70, 150, 30));
 
+        cajaNombrePA.setEditable(false);
         cajaNombrePA.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cajaNombrePAActionPerformed(evt);
@@ -82,10 +83,10 @@ public class PanelAdministrador extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton JBBuscar;
+    public static javax.swing.JButton JBBuscar;
     private javax.swing.JButton JBSalir;
-    private javax.swing.JTextField cajaCodigoPA;
-    private javax.swing.JTextField cajaNombrePA;
+    public static javax.swing.JTextField cajaCodigoPA;
+    public static javax.swing.JTextField cajaNombrePA;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;

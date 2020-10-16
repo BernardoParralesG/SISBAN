@@ -1,8 +1,7 @@
 package DAO.Impl;
-
+import Vista.Paneles.Nivel0.*;
 import DAO.DAOException;
 import DAO.UsuarioDAO;
-import MODELO.Clases.Cuenta;
 import MODELO.Clases.Usuarios;
 import MODELO.Conexion;
 import java.sql.Connection;
@@ -103,8 +102,27 @@ public class UsuarioDAOImpl extends Conexion implements UsuarioDAO {
 
     @Override
     public Usuarios obtener(Integer id) throws DAOException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        Connection cn = null;
+        Statement stn = null;
+        ResultSet rs = null;
+        Usuarios n;
+        String sql = "SELECT NOMBRE FROM USUARIOS WHERE COD_USU ="+id;
+        try{
+            this.conectar();
+            cn = this.getCon();
+            stn = cn.createStatement();
+            rs = stn.executeQuery(sql);
+            if (rs != null) {
+                while (rs.next()) {
+                    PanelAdministrador pn = new PanelAdministrador();
+                    pn.cajaNombrePA.setText(rs.getString(3));
+                }
+                stn.close();
+                rs.close();
+            }
+        } catch (Exception ex) {
+            Logger.getLogger(ClienteDAOImpl.class.getName()).log(Level.SEVERE, null, ex);
+        }    
+        return null;
     }
-
-    
 }

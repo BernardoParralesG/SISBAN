@@ -15,7 +15,7 @@ import javax.swing.*;
 
 public class ControladorCliente implements ActionListener {
     
-    private VentanaPruebas Vp = new VentanaPruebas();
+    private VentanaPrincipal Vp = new VentanaPrincipal();
     private javax.swing.JScrollPane scroll;
     private PanelDepartamentos pnd=new PanelDepartamentos();
     private PanelClientes pnc=new PanelClientes();
@@ -25,7 +25,11 @@ public class ControladorCliente implements ActionListener {
     }
 
     public void Iniciar() {
-        Vp.botonCliente.addActionListener(this);
+        pnc.JBAgregar.addActionListener(this);
+        pnc.JBEliminar.addActionListener(this);
+        pnc.JBBuscar.addActionListener(this);
+        pnc.JBModificar.addActionListener(this);
+        pnc.JBSalir.addActionListener(this);
         Vp.setLocationRelativeTo(null);
         Vp.setVisible(true);
     }
@@ -50,19 +54,12 @@ public class ControladorCliente implements ActionListener {
         pen.llenarTabla(sisban);      
     }
     public ClientesSisban obtener(int id){
-        return null;
-        
+        return null;        
     }
     @Override
     public void actionPerformed(ActionEvent a) {  
         ClientesSisban cli;
         Object boton = a.getSource();
-        if (boton.equals(Vp.botonCliente)) {
-            definirPanel(pnc);
-        }
-        if (boton.equals(Vp.botonDepartamento)) {
-            definirPanel(pnd);
-        }
         PanelClientes pn = new PanelClientes();
         if(boton.equals(pn.JBAgregar)){
             cli = new ClientesSisban(Integer.parseInt(pn.jCodigo.getText()),pn.jCedula.getText(),pn.jNombres.getName(),pn.jApellidos.getText(),pn.jFechaNac.getText(),pn.jDireccion.getText(),pn.jTelefono.getText());
@@ -84,8 +81,11 @@ public class ControladorCliente implements ActionListener {
             /*eliminar(pn.jCodigo.getText()));
             System.out.println("x");*/
         }
-        if (boton.equals(pn.JBAgregar)) {
+        if (boton.equals(pn.JBBuscar)) {
             obtener(Integer.parseInt(pn.jCodigo.getText()));
+        }
+        if (boton.equals(pn.JBSalir)) {
+            Vp.setVisible(true);
         }
     }
     private void definirPanel(JPanel pn){

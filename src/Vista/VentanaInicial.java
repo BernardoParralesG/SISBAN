@@ -61,7 +61,7 @@ public class VentanaInicial extends javax.swing.JFrame{
     }// </editor-fold>//GEN-END:initComponents
 
     private void JBtnIngresoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBtnIngresoActionPerformed
-
+        dispose();
     }//GEN-LAST:event_JBtnIngresoActionPerformed
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
