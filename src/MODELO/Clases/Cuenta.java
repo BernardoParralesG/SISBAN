@@ -1,14 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package MODELO.Clases;
-
-/**
- *
- * @author EQUINOX
- */
 public class Cuenta {
     private int cod_cuenta;
     private int cliente;
@@ -16,6 +6,9 @@ public class Cuenta {
     private String estado;
     private float saldo_contable;
     private float saldo_disponible;
+
+    public Cuenta() {
+    }
 
     public Cuenta(int cod_cuenta, int cliente, String tipo, String estado, float saldo_contable, float saldo_disponible) {
         this.cod_cuenta = cod_cuenta;

@@ -1,9 +1,14 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package DAO.Impl;
 
+import DAO.CuentaDAO;
 import DAO.DAOException;
-import DAO.UsuarioDAO;
+import MODELO.Clases.ClientesSisban;
 import MODELO.Clases.Cuenta;
-import MODELO.Clases.Usuarios;
 import MODELO.Conexion;
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -14,14 +19,14 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class UsuarioDAOImpl extends Conexion implements UsuarioDAO {
 
-    @Override
-    public void insertar(Usuarios a) throws DAOException {
+public class CuentaDAOImpl extends Conexion implements CuentaDAO {
+
+    public void insertar(Cuenta a) throws DAOException {
         Connection cn = null;
         Statement stn = null;
-        String sql ="Insert into USUARIOS values (" + a.getCod_usu()+ "," + a.getEmpleado()+ ",'" 
-                + a.getNombre()+ "','" + a.getContrasena()+"',"+a.getNivel_acceso()+ ")";
+        String sql = "Insert into CUENTA values (" + a.getCod_cuenta()+ "," + a.getCliente()+ ",'" 
+                + a.getTipo()+ "','" + a.getEstado()+"',"+a.getSaldo_contable()+","+a.getSaldo_disponible()+ ")";
         try {
             this.conectar();
             con = this.getCon();
@@ -32,12 +37,13 @@ public class UsuarioDAOImpl extends Conexion implements UsuarioDAO {
         }
     }
 
-    @Override
-    public void modificar(Usuarios a) throws DAOException {
+    public void modificar(Cuenta a) throws DAOException {
         Connection cn = null;
         Statement st = null;
-        String sql = "update USUARIOS set COD_USU=" +a.getCod_usu()+ ",EMPLEADO=" + a.getEmpleado()+ ",NOMBRE='" 
-                + a.getNombre()+ "',CONTRASENA='" + a.getContrasena()+"',NIVEL_ACCESO="+a.getNivel_acceso()+" where COD_USU="+a.getCod_usu();
+        String sql = "update CUENTA set COD_CUENTA=" + a.getCod_cuenta()+ ",CLIENTE=" + a.getCliente()+ ",TIPO='" 
+                + a.getTipo()+ "',ESTADO='" + a.getEstado()+"',SALDO_CONTABLE="+a.getSaldo_contable()
+                +",SALDO_DISPONIBLE="+a.getSaldo_disponible()+ "where COD_CUENTA="+a.getCod_cuenta();
+        int filas = 0;
         try {
             this.conectar(); //solo 1 vez
             cn = this.getCon();
@@ -51,11 +57,10 @@ public class UsuarioDAOImpl extends Conexion implements UsuarioDAO {
         }
     }
 
-    @Override
-    public void eliminar(Usuarios a) throws DAOException {
+    public void eliminar(Cuenta a) throws DAOException {
         Connection cn = null;
         Statement st = null;
-        String sql = "DELETE FROM USUARIOS where COD_USU= " + a.getCod_usu();
+        String sql = "DELETE FROM CUENTA where COD_CUENTA= " + a.getCod_cuenta();
         try {
             this.conectar(); //1 sola vez
             cn = this.getCon();
@@ -67,13 +72,12 @@ public class UsuarioDAOImpl extends Conexion implements UsuarioDAO {
         }
     }
 
-    @Override
-    public List<Usuarios> obtenerTodos() throws DAOException {
-       List<Usuarios> listDep = new ArrayList<>();
+    public List<Cuenta> obtenerTodos() throws DAOException {
+        List<Cuenta> listDep = new ArrayList<>();
         Connection cn = null;
         Statement stn = null;
         ResultSet rs = null;
-        String sql = "SELECT COD_USU,EMPLEADO,NOMBRE,CONTRASENA,NIVEL_ACCESO FROM CUENTA";
+        String sql = "SELECT COD_CUENTA,CLIENTE,TIPO,ESTADO,SALDO_CONTABLE,SALDO_DISPONIBLE FROM CUENTA";
         try {
             this.conectar();
             cn = this.getCon();
@@ -81,12 +85,13 @@ public class UsuarioDAOImpl extends Conexion implements UsuarioDAO {
             rs = stn.executeQuery(sql);
             if (rs != null) {
                 while (rs.next()) {
-                    Usuarios d = new Usuarios();
-                    d.setCod_usu(rs.getInt(1));
-                    d.setEmpleado(rs.getInt(2));
-                    d.setNombre(rs.getString(3));
-                    d.setContrasena(rs.getString(4));
-                    d.setNivel_acceso(rs.getInt(5));
+                    Cuenta d = new Cuenta();
+                    d.setCod_cuenta(rs.getInt(1));
+                    d.setCliente(rs.getInt(2));
+                    d.setTipo(rs.getString(3));
+                    d.setEstado(rs.getString(4));
+                    d.setSaldo_contable(rs.getFloat(5));
+                    d.setSaldo_disponible(rs.getFloat(6));
                     listDep.add(d);
                 }
                 stn.close();
@@ -98,13 +103,7 @@ public class UsuarioDAOImpl extends Conexion implements UsuarioDAO {
         for (int i = 0; i < listDep.size(); i++) {
             System.out.println(listDep.get(i));
         }
-        return listDep; 
+        return listDep;
     }
-
-    @Override
-    public Usuarios obtener(Integer id) throws DAOException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
     
 }
