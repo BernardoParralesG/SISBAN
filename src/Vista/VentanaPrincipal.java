@@ -5,12 +5,16 @@
  */
 package Vista;
 
+import Vista.Paneles.Nivel1.PanelClientes;
+import javax.swing.JPanel;
+
 /**
  *
  * @author EQUINOX
  */
 public class VentanaPrincipal extends javax.swing.JFrame {
 
+    PanelClientes pn=new PanelClientes();
     /**
      * Creates new form VentanaPrincipal
      */
@@ -18,6 +22,9 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         initComponents();
     }
 
+    private void definirPanel(JPanel pn){
+        scroll.setViewportView(pn);
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -27,7 +34,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jScrollPane1 = new javax.swing.JScrollPane();
+        scroll = new javax.swing.JScrollPane();
         jMenuBar1 = new javax.swing.JMenuBar();
         menuCuentas = new javax.swing.JMenu();
         jmenuClientes = new javax.swing.JMenuItem();
@@ -39,6 +46,11 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         menuCuentas.setText("Cuentas");
 
         jmenuClientes.setText("Clientes");
+        jmenuClientes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmenuClientesActionPerformed(evt);
+            }
+        });
         menuCuentas.add(jmenuClientes);
 
         jmenuUsuario.setText("Usuarios");
@@ -55,15 +67,19 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 843, Short.MAX_VALUE)
+            .addComponent(scroll, javax.swing.GroupLayout.DEFAULT_SIZE, 843, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 628, Short.MAX_VALUE)
+            .addComponent(scroll, javax.swing.GroupLayout.DEFAULT_SIZE, 628, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jmenuClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmenuClientesActionPerformed
+        definirPanel(pn);
+    }//GEN-LAST:event_jmenuClientesActionPerformed
 
     /**
      * @param args the command line arguments
@@ -103,9 +119,9 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JMenuItem jmenuClientes;
     private javax.swing.JMenuItem jmenuUsuario;
     private javax.swing.JMenu menuCuentas;
+    private javax.swing.JScrollPane scroll;
     // End of variables declaration//GEN-END:variables
 }

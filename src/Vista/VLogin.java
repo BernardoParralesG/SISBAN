@@ -86,7 +86,8 @@ public class VLogin extends javax.swing.JFrame implements  MouseListener{
         if (cajaUsuario.getText().equals("") || contraseña.equals("")) {
             JOptionPane.showMessageDialog(null,"Por favor rellene los campos");
         }else{
-            
+            VentanaPrincipal v= new VentanaPrincipal();
+            v.setVisible(true);
         }
     }//GEN-LAST:event_JBtnIngresoActionPerformed
     public static void main(String args[]) {

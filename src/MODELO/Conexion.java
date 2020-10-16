@@ -14,67 +14,43 @@ import java.sql.SQLException;
  * @author EQUINOX
  */
 public class Conexion {
-    private Connection conn;
-    private String url;
-    private String username;
-    private String password;
-    
-    public Conexion(){
-    }
-    public Conexion(Connection conn){
-        this.conn=conn;
-    }
-    public void conectar() throws ClassNotFoundException, SQLException{
-        Class.forName("oracle.jdbc.OracleDriver");//"oracle.jdbc.driver.OracleDriver"
-        url="jdbc:oracle:thin:@localhost:1521:XE";
-        username="adminsb";
-        password="admin";
-        conn = DriverManager.getConnection(url, username, password);
+    public Connection con;
+
+    public Conexion() {
     }
 
-    public void desconectar() throws Exception{
+    public Conexion(Connection con) {
+        this.con = con;
+    }
+    
+    public void conectar() throws ClassNotFoundException, SQLException{
         try{
-            if(conn!=null){
-                if(conn.isClosed()==false){
-                    conn.close();
-                }
-            }
-        }catch(SQLException e){
-            throw e;
+            String url = "jdbc:oracle:thin:@localhost:1521:XE";
+            Class.forName("oracle.jdbc.driver.OracleDriver");
+            con = DriverManager.getConnection(url,"adminsb","admin");
+        }
+        catch(SQLException e){
         }
     }
-    public String getUrl() {
-        return url;
-    }
-
-    public void setUrl(String url) {
-        this.url = url;
-    }
-
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public Connection getConn() {
-        return conn;
-    }
-
-    public void setConn(Connection conn) {
-        this.conn = conn;
-    }
     
+    public void desconectar() throws Exception{
+        try {
+            if(con!=null){
+                if(con.isClosed()==false){
+                    con.close();
+                }
+            }
+        } catch (SQLException e) {
+        }
+    }
+
+    public Connection getCon() {
+        return con;
+    }
+
+    public void setCon(Connection con) {
+        this.con = con;
+    }
     
     
 }

@@ -13,6 +13,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -30,20 +31,22 @@ public class ClienteDAOImpl extends Conexion implements ClienteDAO {
     private ResultSet rs;
     @Override
     public void insertar(ClientesSisban a) throws DAOException {
+        boolean val = false;
+        Connection cn = null;
+        Statement stn = null;
+        String sql = "INSERT INTO CLIENTES_SISBAN(COD_CLIENTE,NUMERO_CEDULA,NOMBRES,APELLIDOS,FECHA_NACIMIENTO,DIRECCION,TELEFONO) values (" + 
+                a.getCodCliente()+ ",'" + a.getNumeroCedula()
+                + "','" + a.getNombres()+ "','" + a.getApellidos() + "',to_date('"+ a.getFechaNacimiento()+"','dd/mm/yyyy'),'"+a.getDireccion()
+                + "','"+a.getTelefono()+"')";
         try {
             this.conectar();
-            st=cn.prepareStatement(INSERT);
-            st.setInt(1, a.getCodCliente());
-            st.setString(3,a.getNumeroCedula());
-            st.setString(4,a.getNombres());
-            st.setString(5,a.getApellidos());
-            st.setString(6,a.getFechaNacimiento());
-            st.setString(7,a.getDireccion());
-            st.setString(8,a.getTelefono());
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(EmpleadoDAOImpl.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (SQLException ex) {
-            Logger.getLogger(EmpleadoDAOImpl.class.getName()).log(Level.SEVERE, null, ex);
+            con = this.getCon();
+            stn = con.createStatement();
+            stn.execute(sql);
+            val = true;
+            //con.close();
+        } catch (Exception ex) {
+            Logger.getLogger(ClienteDAOImpl.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
