@@ -1,11 +1,13 @@
 package Vista;
 import Vista.Paneles.Nivel0.*;
 import Vista.Paneles.Nivel1.*;
+import Vista.Paneles.Nivel2.*;
 import javax.swing.JPanel;
 public class VentanaPrincipal extends javax.swing.JFrame {
 
     PanelClientes pn=new PanelClientes();
     PanelAdministrador pa = new PanelAdministrador();
+    PanelTransacciones pt = new PanelTransacciones();
     public VentanaPrincipal() {
         initComponents();
     }
@@ -21,8 +23,9 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         jMenuBar1 = new javax.swing.JMenuBar();
         menuCuentas = new javax.swing.JMenu();
         jmenuClientes = new javax.swing.JMenuItem();
-        jmenuUsuario = new javax.swing.JMenuItem();
-        jMenu2 = new javax.swing.JMenu();
+        JTransa = new javax.swing.JMenuItem();
+        JAdministrador = new javax.swing.JMenu();
+        JUser = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -36,18 +39,27 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         });
         menuCuentas.add(jmenuClientes);
 
-        jmenuUsuario.setText("Usuarios");
-        jmenuUsuario.addActionListener(new java.awt.event.ActionListener() {
+        JTransa.setText("Transacciones");
+        JTransa.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jmenuUsuarioActionPerformed(evt);
+                JTransaActionPerformed(evt);
             }
         });
-        menuCuentas.add(jmenuUsuario);
+        menuCuentas.add(JTransa);
 
         jMenuBar1.add(menuCuentas);
 
-        jMenu2.setText("Administracion");
-        jMenuBar1.add(jMenu2);
+        JAdministrador.setText("Administracion");
+        JAdministrador.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JAdministradorActionPerformed(evt);
+            }
+        });
+
+        JUser.setText("Usuarios");
+        JAdministrador.add(JUser);
+
+        jMenuBar1.add(JAdministrador);
 
         setJMenuBar(jMenuBar1);
 
@@ -69,9 +81,13 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         definirPanel(pn);
     }//GEN-LAST:event_jmenuClientesActionPerformed
 
-    private void jmenuUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmenuUsuarioActionPerformed
-        definirPanel(pa);
-    }//GEN-LAST:event_jmenuUsuarioActionPerformed
+    private void JTransaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JTransaActionPerformed
+        definirPanel(pt);
+    }//GEN-LAST:event_JTransaActionPerformed
+
+    private void JAdministradorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JAdministradorActionPerformed
+         definirPanel(pa);
+    }//GEN-LAST:event_JAdministradorActionPerformed
 
     /**
      * @param args the command line arguments
@@ -109,10 +125,11 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JMenu jMenu2;
+    private javax.swing.JMenu JAdministrador;
+    private javax.swing.JMenuItem JTransa;
+    private javax.swing.JMenuItem JUser;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jmenuClientes;
-    private javax.swing.JMenuItem jmenuUsuario;
     private javax.swing.JMenu menuCuentas;
     private javax.swing.JScrollPane scroll;
     // End of variables declaration//GEN-END:variables

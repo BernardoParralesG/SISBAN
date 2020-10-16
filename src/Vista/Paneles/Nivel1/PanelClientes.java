@@ -166,9 +166,7 @@ public class PanelClientes extends javax.swing.JPanel {
         add(JBBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 110, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
     private DefaultTableModel modeloTabla = new DefaultTableModel();
-        
-
-    
+ 
     public boolean validarCampos(){
         boolean val=true;
         if(jCodigo.getText().equals("")||jNombres.getText().equals("")||jCedula.getText().equals("")||jApellidos.getText().equals("")||jFechaNac.getText().equals("")||jDireccion.getText().equals("")||jTelefono.getText().equals("")){

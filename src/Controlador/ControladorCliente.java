@@ -65,6 +65,7 @@ public class ControladorCliente implements ActionListener {
             cli = new ClientesSisban(Integer.parseInt(pn.jCodigo.getText()),pn.jCedula.getText(),pn.jNombres.getName(),pn.jApellidos.getText(),pn.jFechaNac.getText(),pn.jDireccion.getText(),pn.jTelefono.getText());
             try {
                 insertar(cli);
+                consultar();
             } catch (DAOException ex) {
                 Logger.getLogger(ControladorCliente.class.getName()).log(Level.SEVERE, null, ex);
             }

@@ -1,19 +1,5 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Vista.Paneles.Nivel2;
-
-/**
- *
- * @author EQUINOX
- */
 public class PanelTransacciones extends javax.swing.JPanel {
-
-    /**
-     * Creates new form PanelTransacciones
-     */
     public PanelTransacciones() {
         initComponents();
     }
