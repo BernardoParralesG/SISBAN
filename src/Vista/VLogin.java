@@ -1,14 +1,9 @@
 package Vista;
-import java.awt.event.*;
 import javax.swing.*;
-
-public class VLogin extends javax.swing.JFrame implements  MouseListener{
-
+public class VLogin extends javax.swing.JFrame {
     public VLogin() {
         initComponents();
         setSize(440,590);
-        setLocationRelativeTo(null);
-        JBtnIngreso.addMouseListener(this);    
     }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -51,7 +46,7 @@ public class VLogin extends javax.swing.JFrame implements  MouseListener{
             }
         });
         getContentPane().add(cajaUsuario);
-        cajaUsuario.setBounds(170, 230, 180, 29);
+        cajaUsuario.setBounds(170, 230, 180, 27);
         getContentPane().add(cajaContrasena);
         cajaContrasena.setBounds(170, 290, 180, 30);
 
@@ -82,13 +77,7 @@ public class VLogin extends javax.swing.JFrame implements  MouseListener{
     }//GEN-LAST:event_cajaUsuarioActionPerformed
 
     private void JBtnIngresoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBtnIngresoActionPerformed
-        String contraseña= new String(cajaContrasena.getPassword());
-        if (cajaUsuario.getText().equals("") || contraseña.equals("")) {
-            JOptionPane.showMessageDialog(null,"Por favor rellene los campos");
-        }else{
-            VentanaPrincipal v= new VentanaPrincipal();
-            v.setVisible(true);
-        }
+
     }//GEN-LAST:event_JBtnIngresoActionPerformed
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -126,7 +115,7 @@ public class VLogin extends javax.swing.JFrame implements  MouseListener{
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Fondo;
-    private javax.swing.JButton JBtnIngreso;
+    public static javax.swing.JButton JBtnIngreso;
     private javax.swing.JPasswordField cajaContrasena;
     private javax.swing.JTextField cajaUsuario;
     private javax.swing.JLabel jLabel4;
@@ -134,51 +123,4 @@ public class VLogin extends javax.swing.JFrame implements  MouseListener{
     private javax.swing.JLabel jLabel7;
     // End of variables declaration//GEN-END:variables
 
-    @Override
-    public void mouseClicked(MouseEvent e) {
-        if(this==e.getSource()){
-            
-            JBtnIngreso.setSize(110, 40);
-        }
-        if(e.getSource()==JBtnIngreso){
-            
-        }else{
-            
-        }
-    }
-
-    @Override
-    public void mousePressed(MouseEvent e) {
-        
-    }
-
-    @Override
-    public void mouseReleased(MouseEvent e) {
-        
-    }
-
-    @Override
-    public void mouseEntered(MouseEvent e) {
-        if(JBtnIngreso ==e.getSource()){
-            JBtnIngreso.setSize(140,60);
-            
-        }else{
-            
-        }
-    }
-
-    @Override
-    public void mouseExited(MouseEvent e) {
-        if(JBtnIngreso ==e.getSource()){
-            JBtnIngreso.setSize(110, 40);
-        }
-        
-    }
 }
-
-
-/*       JFrame.setDefaultLookAndFeelDecorated(true);
-        try {
-            UIManager.setLookAndFeel("com.jtattoo.plaf.aluminium.AluminiumLookAndFeel");
-        } catch (Exception e) {
-        }*/

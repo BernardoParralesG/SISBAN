@@ -1,24 +1,8 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Vista;
-
 import Vista.Paneles.Nivel0.PanelDepartamentos;
 import Vista.Paneles.Nivel1.PanelClientes;
 import javax.swing.JPanel;
-
-/**
- *
- * @author EQUINOX
- */
 public class VentanaPruebas extends javax.swing.JFrame {
-
-    /**
-     * Creates new form VentanaPruebas
-     */
-    
     private PanelDepartamentos pnd=new PanelDepartamentos();
     private PanelClientes pnc=new PanelClientes();
     public VentanaPruebas() {
@@ -28,13 +12,6 @@ public class VentanaPruebas extends javax.swing.JFrame {
     private void definirPanel(JPanel pn){
         scroll.setViewportView(pn);
     }
-    /*
-    private void definirPanel(PanelDepartamentos pn){
-        scroll.setViewportView(pn);
-    }
-    private void definirPanel(PanelClientes pn){
-        scroll.setViewportView(pn);
-    }*/
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -45,14 +22,14 @@ public class VentanaPruebas extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        botonDepartamento.setText("departamento");
+        botonDepartamento.setText("DEPARTAMENTO");
         botonDepartamento.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botonDepartamentoActionPerformed(evt);
             }
         });
 
-        botonCliente.setText("cliente");
+        botonCliente.setText("CLIENTE");
         botonCliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botonClienteActionPerformed(evt);
@@ -71,7 +48,7 @@ public class VentanaPruebas extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(48, 48, 48)
                         .addComponent(botonDepartamento)
-                        .addGap(36, 36, 36)
+                        .addGap(65, 65, 65)
                         .addComponent(botonCliente)))
                 .addContainerGap(38, Short.MAX_VALUE))
         );
@@ -134,8 +111,8 @@ public class VentanaPruebas extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton botonCliente;
-    private javax.swing.JButton botonDepartamento;
+    public static javax.swing.JButton botonCliente;
+    public static javax.swing.JButton botonDepartamento;
     private javax.swing.JScrollPane scroll;
     // End of variables declaration//GEN-END:variables
 }

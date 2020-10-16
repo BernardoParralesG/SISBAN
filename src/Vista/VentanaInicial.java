@@ -1,15 +1,10 @@
 package Vista;
-import java.awt.event.*;
 import javax.swing.*;
-
-public class VentanaInicial extends javax.swing.JFrame implements  MouseListener{
+public class VentanaInicial extends javax.swing.JFrame{
 
     public VentanaInicial() {
         initComponents();
-        setSize(440,590);
-        setLocationRelativeTo(null);
-        JBtnIngreso.addMouseListener(this);
-        JBtnRegistro.addMouseListener(this);     
+        setSize(440,590);     
     }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -18,8 +13,6 @@ public class VentanaInicial extends javax.swing.JFrame implements  MouseListener
         JBtnIngreso = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        JBtnRegistro = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
         Fondo = new javax.swing.JLabel();
 
@@ -36,7 +29,7 @@ public class VentanaInicial extends javax.swing.JFrame implements  MouseListener
             }
         });
         getContentPane().add(JBtnIngreso);
-        JBtnIngreso.setBounds(90, 340, 60, 70);
+        JBtnIngreso.setBounds(80, 340, 60, 70);
 
         jLabel2.setFont(new java.awt.Font("Lucida Calligraphy", 1, 27)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
@@ -49,17 +42,6 @@ public class VentanaInicial extends javax.swing.JFrame implements  MouseListener
         jLabel4.setText("SISBAN");
         getContentPane().add(jLabel4);
         jLabel4.setBounds(150, 160, 140, 60);
-
-        jLabel5.setFont(new java.awt.Font("Californian FB", 1, 18)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel5.setText("Registrarse");
-        getContentPane().add(jLabel5);
-        jLabel5.setBounds(180, 470, 140, 30);
-
-        JBtnRegistro.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/SignUp.jpg"))); // NOI18N
-        JBtnRegistro.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        getContentPane().add(JBtnRegistro);
-        JBtnRegistro.setBounds(90, 450, 60, 70);
 
         jLabel6.setFont(new java.awt.Font("Californian FB", 1, 18)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
@@ -80,9 +62,6 @@ public class VentanaInicial extends javax.swing.JFrame implements  MouseListener
 
     private void JBtnIngresoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBtnIngresoActionPerformed
 
-        VLogin log=new VLogin();
-        log.setVisible(true);
-        dispose();
     }//GEN-LAST:event_JBtnIngresoActionPerformed
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -120,60 +99,10 @@ public class VentanaInicial extends javax.swing.JFrame implements  MouseListener
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Fondo;
-    private javax.swing.JButton JBtnIngreso;
-    private javax.swing.JButton JBtnRegistro;
+    public static javax.swing.JButton JBtnIngreso;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     // End of variables declaration//GEN-END:variables
 
-    @Override
-    public void mouseClicked(MouseEvent e) {
-        if(this==e.getSource()){
-            JBtnRegistro.setSize(60, 70);
-            JBtnIngreso.setSize(60, 70);
-        }
-        if(e.getSource()==JBtnIngreso){
-            
-        }else{
-            if(e.getSource()==JBtnRegistro){
-            }
-        }
-    }
-
-    @Override
-    public void mousePressed(MouseEvent e) {
-        
-    }
-
-    @Override
-    public void mouseReleased(MouseEvent e) {
-        
-    }
-
-    @Override
-    public void mouseEntered(MouseEvent e) {
-        if(JBtnIngreso ==e.getSource()){
-            JBtnIngreso.setSize(80,80);
-            JBtnRegistro.setSize(60, 70);
-        }else{
-            if(JBtnRegistro ==e.getSource()){
-                JBtnRegistro.setSize(80,80);
-                JBtnIngreso.setSize(60, 70);
-            }
-        }
-    }
-
-    @Override
-    public void mouseExited(MouseEvent e) {
-        
-    }
 }
-
-
-/*       JFrame.setDefaultLookAndFeelDecorated(true);
-        try {
-            UIManager.setLookAndFeel("com.jtattoo.plaf.aluminium.AluminiumLookAndFeel");
-        } catch (Exception e) {
-        }*/

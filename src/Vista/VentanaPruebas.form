@@ -32,7 +32,7 @@
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="48" max="-2" attributes="0"/>
                       <Component id="botonDepartamento" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="65" max="-2" attributes="0"/>
                       <Component id="botonCliente" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
@@ -58,11 +58,14 @@
   <SubComponents>
     <Component class="javax.swing.JButton" name="botonDepartamento">
       <Properties>
-        <Property name="text" type="java.lang.String" value="departamento"/>
+        <Property name="text" type="java.lang.String" value="DEPARTAMENTO"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="botonDepartamentoActionPerformed"/>
       </Events>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="9"/>
+      </AuxValues>
     </Component>
     <Container class="javax.swing.JScrollPane" name="scroll">
 
@@ -70,11 +73,14 @@
     </Container>
     <Component class="javax.swing.JButton" name="botonCliente">
       <Properties>
-        <Property name="text" type="java.lang.String" value="cliente"/>
+        <Property name="text" type="java.lang.String" value="CLIENTE"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="botonClienteActionPerformed"/>
       </Events>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="9"/>
+      </AuxValues>
     </Component>
   </SubComponents>
 </Form>
