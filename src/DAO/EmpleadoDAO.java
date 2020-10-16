@@ -11,6 +11,6 @@ import MODELO.Clases.Empleado;
  *
  * @author EQUINOX
  */
-public interface EmpleadoDAO extends DAO <Empleado,Integer>{
+public interface EmpleadoDAO extends DAO <Empleado>{
     
 }

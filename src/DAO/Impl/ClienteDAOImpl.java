@@ -10,7 +10,6 @@ import DAO.DAOException;
 import MODELO.Clases.ClientesSisban;
 import MODELO.Conexion;
 import java.sql.Connection;
-import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -21,9 +20,7 @@ import java.util.logging.Logger;
 
 
 public class ClienteDAOImpl extends Conexion implements ClienteDAO {
-    private Connection cn;
-    private PreparedStatement st;
-    private ResultSet rs;
+    
     @Override
     public void insertar(ClientesSisban a) throws DAOException {
         boolean val = false;
@@ -121,10 +118,6 @@ public class ClienteDAOImpl extends Conexion implements ClienteDAO {
         return listDep;
     }
 
-    @Override
-    public ClientesSisban obtener(Integer id) throws DAOException {
-        return null;
-        
-    }
+    
     
 }

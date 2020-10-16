@@ -5,15 +5,12 @@
  */
 package DAO;
 
-import MODELO.Clases.Usuarios;
-import java.util.List;
+import MODELO.Clases.Cajero;
 
 /**
  *
  * @author EQUINOX
  */
-public interface UsuarioDAO extends DAO<Usuarios>{
-    
-    public boolean validarSesion(Usuarios a);
+public interface CajaDAO extends DAO<Cajero>{
     
 }

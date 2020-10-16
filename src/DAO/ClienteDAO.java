@@ -11,6 +11,6 @@ import MODELO.Clases.ClientesSisban;
  *
  * @author EQUINOX
  */
-public interface ClienteDAO extends DAO <ClientesSisban,Integer>{
+public interface ClienteDAO extends DAO <ClientesSisban>{
     
 }

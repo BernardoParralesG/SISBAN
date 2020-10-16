@@ -22,6 +22,7 @@ import java.util.logging.Logger;
 
 public class CuentaDAOImpl extends Conexion implements CuentaDAO {
 
+    @Override
     public void insertar(Cuenta a) throws DAOException {
         Connection cn = null;
         Statement stn = null;
@@ -37,6 +38,7 @@ public class CuentaDAOImpl extends Conexion implements CuentaDAO {
         }
     }
 
+    @Override
     public void modificar(Cuenta a) throws DAOException {
         Connection cn = null;
         Statement st = null;
@@ -45,7 +47,7 @@ public class CuentaDAOImpl extends Conexion implements CuentaDAO {
                 +",SALDO_DISPONIBLE="+a.getSaldo_disponible()+ "where COD_CUENTA="+a.getCod_cuenta();
         int filas = 0;
         try {
-            this.conectar(); //solo 1 vez
+            this.conectar(); 
             cn = this.getCon();
             st = cn.createStatement();
             st.execute(sql);
@@ -57,6 +59,7 @@ public class CuentaDAOImpl extends Conexion implements CuentaDAO {
         }
     }
 
+    @Override
     public void eliminar(Cuenta a) throws DAOException {
         Connection cn = null;
         Statement st = null;
@@ -72,6 +75,7 @@ public class CuentaDAOImpl extends Conexion implements CuentaDAO {
         }
     }
 
+    @Override
     public List<Cuenta> obtenerTodos() throws DAOException {
         List<Cuenta> listDep = new ArrayList<>();
         Connection cn = null;
@@ -100,15 +104,10 @@ public class CuentaDAOImpl extends Conexion implements CuentaDAO {
         } catch (Exception ex) {
             Logger.getLogger(ClienteDAOImpl.class.getName()).log(Level.SEVERE, null, ex);
         }
-        for (int i = 0; i < listDep.size(); i++) {
+        /*for (int i = 0; i < listDep.size(); i++) {
             System.out.println(listDep.get(i));
-        }
+        }*/
         return listDep;
-    }
-
-    @Override
-    public Cuenta obtener(Integer id) throws DAOException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
 }

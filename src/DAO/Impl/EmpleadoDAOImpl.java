@@ -1,3 +1,4 @@
+
 package DAO.Impl;
 import MODELO.Clases.*;
 import DAO.DAOException;
@@ -16,11 +17,6 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 public class EmpleadoDAOImpl extends Conexion implements EmpleadoDAO{
 
-    final String GETALL = "SELECT COD,DEPARTAMENTO,CEDULA,NOMBRES,APELLISDOS,FECHA_NAC,DIRECCION,TELEFONO,CARGO,FECHA_INGRE FROM EMPLEADO";
-    final String GET0NE = "SELECT COD,DEPARTAMENTO,CEDULA,NOMBRES,APELLISDOS,FECHA_NAC,DIRECCION,TELEFONO,CARGO,FECHA_INGRE FROM EMPLEADO where COD=?";
-    private Connection cn;
-    private PreparedStatement st;
-    private ResultSet rs;
     @Override
     public void insertar(Empleado a) throws DAOException {
         boolean val = false;
@@ -119,25 +115,6 @@ public class EmpleadoDAOImpl extends Conexion implements EmpleadoDAO{
             System.out.println(listDep.get(i));
         }
         return listDep;
-    }
-
-    @Override
-    public Empleado obtener(Integer id) throws DAOException {
-        /*boolean val = false;
-        Connection cn = null;
-        Statement st = null;
-        String sql = "SELECT*FROM EMPLEADO where COD= " + id;
-        try {
-            this.conectar(); //1 sola vez
-            cn = this.getCon();
-            st = cn.createStatement();
-            st.execute(sql);
-            st.close();
-            val = true;
-        } catch (Exception e) {
-            
-        }*/
-        return null;
     }
 
 }
