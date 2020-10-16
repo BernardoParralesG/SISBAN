@@ -6,10 +6,12 @@ import java.awt.event.*;
 import javax.swing.*;
 
 public class ControladorCliente implements ActionListener {
+    
     private VentanaPruebas Vp = new VentanaPruebas();
     private javax.swing.JScrollPane scroll;
     private PanelDepartamentos pnd=new PanelDepartamentos();
     private PanelClientes pnc=new PanelClientes();
+    
     public ControladorCliente() {
         Iniciar();
     }

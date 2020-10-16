@@ -7,13 +7,11 @@ public class Controlador implements ActionListener{
     public Controlador() {
         Iniciar();
     }
-
     public void Iniciar() {
         vent.JBtnIngreso.addActionListener(this);
         vent.setLocationRelativeTo(null);
         vent.setVisible(true);
     }
-
     @Override
     public void actionPerformed(ActionEvent a) {
         Object boton = a.getSource();
@@ -22,6 +20,5 @@ public class Controlador implements ActionListener{
             obj.setLocationRelativeTo(null);
             obj.setVisible(true);
         }
-
     }
 }

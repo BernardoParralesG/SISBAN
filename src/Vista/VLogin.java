@@ -50,16 +50,9 @@ public class VLogin extends javax.swing.JFrame {
         getContentPane().add(cajaContrasena);
         cajaContrasena.setBounds(170, 290, 180, 30);
 
-        JBtnIngreso.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Boton-Ingresar2.jpg"))); // NOI18N
-        JBtnIngreso.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        JBtnIngreso.setBorderPainted(false);
-        JBtnIngreso.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                JBtnIngresoActionPerformed(evt);
-            }
-        });
+        JBtnIngreso.setText("ACCEDER");
         getContentPane().add(JBtnIngreso);
-        JBtnIngreso.setBounds(150, 370, 110, 40);
+        JBtnIngreso.setBounds(160, 390, 90, 23);
 
         Fondo.setBackground(new java.awt.Color(255, 255, 255));
         Fondo.setForeground(new java.awt.Color(255, 255, 255));
@@ -67,7 +60,7 @@ public class VLogin extends javax.swing.JFrame {
         Fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Fondo.jpg"))); // NOI18N
         Fondo.setToolTipText("");
         getContentPane().add(Fondo);
-        Fondo.setBounds(-40, 0, 480, 550);
+        Fondo.setBounds(-20, 0, 450, 560);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -75,10 +68,6 @@ public class VLogin extends javax.swing.JFrame {
     private void cajaUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cajaUsuarioActionPerformed
 
     }//GEN-LAST:event_cajaUsuarioActionPerformed
-
-    private void JBtnIngresoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBtnIngresoActionPerformed
-
-    }//GEN-LAST:event_JBtnIngresoActionPerformed
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
