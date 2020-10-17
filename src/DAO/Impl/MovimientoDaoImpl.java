@@ -23,9 +23,10 @@ import java.util.logging.Logger;
 public class MovimientoDaoImpl extends Conexion implements MovimientoDao {
 
     @Override
-    public void insertar(Movimientos a) throws DAOException {
+    public boolean insertar(Movimientos a){
         Connection cn=null;
         Statement st=null;
+        boolean val=false;
         String sql="insert into MOVIMIENTOS values ("+a.getDocumento()+","+a.getCaja()+","+a.getCuenta()
                 +",'"+a.getConcepto()+"','"+a.getTipo()+"',"+a.getMonto()+")";
         try {
@@ -33,20 +34,23 @@ public class MovimientoDaoImpl extends Conexion implements MovimientoDao {
             con = this.getCon();
             st = con.createStatement();
             st.execute(sql);
+            val=true;
         } catch (Exception ex) {
             Logger.getLogger(ClienteDAOImpl.class.getName()).log(Level.SEVERE, null, ex);
         }
+        return val;
     }
 
     @Override
-    public void modificar(Movimientos a) throws DAOException {
-        
+    public boolean modificar(Movimientos a){
+        return true;
     }
 
     @Override
-    public void eliminar(Movimientos a) throws DAOException {
+    public boolean eliminar(Movimientos a){
         Connection cn = null;
         Statement st = null;
+        boolean val=false;
         String sql = "DELETE FROM MOVIMIENTOS where DOCUMENTO= " + a.getDocumento();
         try {
             this.conectar(); //1 sola vez
@@ -54,13 +58,15 @@ public class MovimientoDaoImpl extends Conexion implements MovimientoDao {
             st = cn.createStatement();
             st.execute(sql);
             st.close();
+            val=true;
         } catch (Exception e) {
             
         }
+        return val;
     }
 
     @Override
-    public List<Movimientos> obtenerTodos() throws DAOException {
+    public List<Movimientos> obtenerTodos(){
         List<Movimientos> listDep = new ArrayList<>();
         Connection cn = null;
         Statement stn = null;

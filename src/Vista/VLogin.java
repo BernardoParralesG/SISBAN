@@ -1,5 +1,6 @@
 package Vista;
 
+import Controlador.*;
 import DAO.Impl.UsuarioDAOImpl;
 import MODELO.Clases.Usuarios;
 import javax.swing.*;
@@ -81,23 +82,7 @@ public class VLogin extends javax.swing.JFrame {
     }//GEN-LAST:event_cajaUsuarioActionPerformed
 
     private void JBtnIngresoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBtnIngresoActionPerformed
-        String contraseña = "";
-        for (int i = 0; i < cajaContrasena.getPassword().length; i++) {
-            contraseña += cajaContrasena.getPassword()[i];
-        }
-        UsuarioDAOImpl login = new UsuarioDAOImpl();
-        Usuarios usuario = new Usuarios();
-        usuario.setNombre(cajaUsuario.getText());
-        usuario.setContrasena(contraseña);
-        if (cajaUsuario.getText().equals("") || contraseña.equals("")) {
-            JOptionPane.showMessageDialog(null, "Rellene los campos");
-        } else if (login.validarSesion(usuario)) {
-            VentanaPrincipal nd = new VentanaPrincipal();
-            nd.setVisible(true);
-            dispose();
-        }else{
-            JOptionPane.showMessageDialog(null, "Usuario o contraseña incorrectos");
-        }
+        dispose();
 
     }//GEN-LAST:event_JBtnIngresoActionPerformed
     public static void main(String args[]) {

@@ -1,12 +1,5 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package DAO.Impl;
-
 import DAO.ClienteDAO;
-import DAO.DAOException;
 import MODELO.Clases.ClientesSisban;
 import MODELO.Conexion;
 import java.sql.Connection;
@@ -22,28 +15,29 @@ import java.util.logging.Logger;
 public class ClienteDAOImpl extends Conexion implements ClienteDAO {
     
     @Override
-    public void insertar(ClientesSisban a) throws DAOException {
+    public boolean insertar(ClientesSisban a){
         boolean val = false;
         Connection cn = null;
         Statement stn = null;
-        String sql = "INSERT INTO CLIENTES_SISBAN(COD_CLIENTE,NUMERO_CEDULA,NOMBRES,APELLIDOS,FECHA_NACIMIENTO,DIRECCION,TELEFONO) values (" + 
+        String sql = "INSERT INTO CLIENTES_SISBAN (COD_CLIENTE, NUMERO_CEDULA, NOMBRES, APELLIDOS, FECHA_NACIMIENTO, DIRECCION, TELEFONO) values (" + 
                 a.getCodCliente()+ ",'" + a.getNumeroCedula()
                 + "','" + a.getNombres()+ "','" + a.getApellidos() + "',to_date('"+ a.getFechaNacimiento()+"','dd/mm/yyyy'),'"+a.getDireccion()
                 + "','"+a.getTelefono()+"')";
         try {
             this.conectar();
-            con = this.getCon();
-            stn = con.createStatement();
+            cn = this.getCon();
+            stn = cn.createStatement();
             stn.execute(sql);
             val = true;
             //con.close();
         } catch (Exception ex) {
             Logger.getLogger(ClienteDAOImpl.class.getName()).log(Level.SEVERE, null, ex);
         }
+        return val;
     }
 
     @Override
-    public void modificar(ClientesSisban a) throws DAOException {
+    public boolean modificar(ClientesSisban a){
         boolean val = false;
         Connection cn = null;
         Statement st = null;
@@ -62,10 +56,11 @@ public class ClienteDAOImpl extends Conexion implements ClienteDAO {
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(ClienteDAOImpl.class.getName()).log(Level.SEVERE, null, ex);
         }
+        return val;
     }
     
     @Override
-    public void eliminar(ClientesSisban a) throws DAOException {
+    public boolean eliminar(ClientesSisban a){
         boolean val = false;
         Connection cn = null;
         Statement st = null;
@@ -80,15 +75,16 @@ public class ClienteDAOImpl extends Conexion implements ClienteDAO {
         } catch (Exception e) {
             
         }
+        return val;
     }
 
     @Override
-    public List<ClientesSisban> obtenerTodos() throws DAOException {
+    public List<ClientesSisban> obtenerTodos(){
         List<ClientesSisban> listDep = new ArrayList<>();
         Connection cn = null;
         Statement stn = null;
         ResultSet rs = null;
-        String sql = "SELECT COD_CLIENTE,NUMERO_CEDULA,NOMBRES,APELLIDOS,FECHA_NACIMIENTO,DIRECCION,TELEFONO FROM CLIENTES_SISBAN";
+        String sql = "SELECT COD_CLIENTE, NUMERO_CEDULA, NOMBRES, APELLIDOS, FECHA_NACIMIENTO, DIRECCION, TELEFONO FROM CLIENTES_SISBAN";
         try {
             this.conectar();
             cn = this.getCon();
@@ -109,11 +105,10 @@ public class ClienteDAOImpl extends Conexion implements ClienteDAO {
                 stn.close();
                 rs.close();
             }
+            else{
+            }
         } catch (Exception ex) {
             Logger.getLogger(ClienteDAOImpl.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        for (int i = 0; i < listDep.size(); i++) {
-            System.out.println(listDep.get(i));
         }
         return listDep;
     }

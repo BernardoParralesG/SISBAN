@@ -22,8 +22,9 @@ import java.util.logging.Logger;
 public class CajaDAOImpl extends Conexion implements CajaDAO {
 
     @Override
-    public void insertar(Cajero a) throws DAOException {
+    public boolean insertar(Cajero a){
         Connection cn=null;
+        boolean val=false;
         Statement st=null;
         String sql="insert into CAJERO values ("+a.getNumero()+","+a.getEmpleado()+","+a.getCliente()+")";
         try {
@@ -31,34 +32,39 @@ public class CajaDAOImpl extends Conexion implements CajaDAO {
             con = this.getCon();
             st = con.createStatement();
             st.execute(sql);
+            val=true;
         } catch (Exception ex) {
             Logger.getLogger(ClienteDAOImpl.class.getName()).log(Level.SEVERE, null, ex);
         }
+        return val;
     }
 
     @Override
-    public void modificar(Cajero a) throws DAOException {
-        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public boolean modificar(Cajero a) {
+        return true;
     }
 
     @Override
-    public void eliminar(Cajero a) throws DAOException {
+    public boolean eliminar(Cajero a){
         Connection cn = null;
         Statement st = null;
+        boolean val=false;
         String sql = "DELETE FROM CAJERO where NUMERO= " + a.getNumero();
         try {
             this.conectar();
             cn = this.getCon();
             st = cn.createStatement();
             st.execute(sql);
+            val=true;
             st.close();
         } catch (Exception e) {
             
         }
+        return val;
     }
 
     @Override
-    public List<Cajero> obtenerTodos() throws DAOException {
+    public List<Cajero> obtenerTodos(){
         List<Cajero> listDep = new ArrayList<>();
         Connection cn = null;
         Statement stn = null;

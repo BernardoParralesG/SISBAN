@@ -1,13 +1,14 @@
 package Vista.Paneles.Nivel1;
-
+import DAO.Impl.ClienteDAOImpl;
 import MODELO.Clases.ClientesSisban;
+import java.util.ArrayList;
 import java.util.List;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 public class PanelClientes extends javax.swing.JPanel {
     public PanelClientes() {
-        initComponents();
-        this.setSize(629, 463);
+        initComponents(); 
         modeloTabla.addColumn("CODIGO");
         modeloTabla.addColumn("CEDULA");
         modeloTabla.addColumn("NOMBRES");
@@ -36,11 +37,10 @@ public class PanelClientes extends javax.swing.JPanel {
         jDireccion = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
-        JBSalir = new javax.swing.JButton();
-        JBAgregar = new javax.swing.JButton();
+        JBConsultar = new javax.swing.JButton();
         JBEliminar = new javax.swing.JButton();
         JBModificar = new javax.swing.JButton();
-        JBBuscar = new javax.swing.JButton();
+        JBAgregar = new javax.swing.JButton();
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -133,38 +133,48 @@ public class PanelClientes extends javax.swing.JPanel {
                 return false;
             }
         };
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-
-            }
-        ));
+        jTable1.setModel(modeloTabla);
         jScrollPane1.setViewportView(jTable1);
 
-        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 280, 619, 183));
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 280, 810, 280));
 
-        JBSalir.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        JBSalir.setText("Salir");
-        add(JBSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 180, -1, -1));
-
-        JBAgregar.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        JBAgregar.setText("Agregar");
-        add(JBAgregar, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 50, -1, -1));
+        JBConsultar.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        JBConsultar.setText("Consultar");
+        JBConsultar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JBConsultarActionPerformed(evt);
+            }
+        });
+        add(JBConsultar, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 110, -1, -1));
 
         JBEliminar.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         JBEliminar.setText("Eliminar");
+        JBEliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JBEliminarActionPerformed(evt);
+            }
+        });
         add(JBEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 50, -1, -1));
 
         JBModificar.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         JBModificar.setText("Modificar");
-        add(JBModificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 110, -1, -1));
+        JBModificar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JBModificarActionPerformed(evt);
+            }
+        });
+        add(JBModificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 110, -1, -1));
 
-        JBBuscar.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        JBBuscar.setText("Buscar");
-        add(JBBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 110, -1, -1));
+        JBAgregar.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        JBAgregar.setText("Registrar");
+        JBAgregar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JBAgregarActionPerformed(evt);
+            }
+        });
+        add(JBAgregar, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 50, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
+    
     private DefaultTableModel modeloTabla = new DefaultTableModel();
  
     public boolean validarCampos(){
@@ -217,18 +227,58 @@ public class PanelClientes extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_jDireccionActionPerformed
 
+    private void JBAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBAgregarActionPerformed
+        ClientesSisban cli;
+        cli = new ClientesSisban(Integer.parseInt(jCodigo.getText()),jCedula.getText(),jNombres.getText(),jApellidos.getText(),jFechaNac.getText(),jDireccion.getText(),jTelefono.getText());
+        ClienteDAOImpl dao = new ClienteDAOImpl();
+        dao.insertar(cli);
+        
+    }//GEN-LAST:event_JBAgregarActionPerformed
+
+    private void JBModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBModificarActionPerformed
+        ClientesSisban cli;
+        cli=new ClientesSisban(Integer.parseInt(jCodigo.getText()));
+        ClienteDAOImpl dao = new ClienteDAOImpl();
+        dao.modificar(cli);
+    }//GEN-LAST:event_JBModificarActionPerformed
+
+    private void JBConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBConsultarActionPerformed
+        ClienteDAOImpl dao = new ClienteDAOImpl();
+        List<ClientesSisban> cli= new ArrayList<>();
+        cli = dao.obtenerTodos();
+        System.out.println(cli);
+        llenarTabla(cli);
+    }//GEN-LAST:event_JBConsultarActionPerformed
+
+    private void JBEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBEliminarActionPerformed
+        ClientesSisban cli;
+        cli=new ClientesSisban(Integer.parseInt(jCodigo.getText()));
+        ClienteDAOImpl dao = new ClienteDAOImpl();
+        if(jCodigo.getText()!=""){
+            int n = JOptionPane.showConfirmDialog(this,"Desea eliminar el dato con Codigo"+jCodigo.getText()+"","Mensaje de SISBAN", JOptionPane.OK_CANCEL_OPTION);
+            if(JOptionPane.OK_OPTION==n){
+                dao.eliminar(cli);
+            }
+            else{
+                JOptionPane.showMessageDialog(this," No se borro el dato","Mensaje de SISBAN", JOptionPane.INFORMATION_MESSAGE);
+            }
+        }
+        else{
+            JOptionPane.showMessageDialog(this,"Debe Ingresar el codigo del campo a eliminar ","Mensaje de SISBAN", JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_JBEliminarActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    public static javax.swing.JButton JBAgregar;
-    public static javax.swing.JButton JBBuscar;
-    public static javax.swing.JButton JBEliminar;
-    public static javax.swing.JButton JBModificar;
-    public static javax.swing.JButton JBSalir;
-    public static javax.swing.JTextField jApellidos;
-    public static javax.swing.JTextField jCedula;
-    public static javax.swing.JTextField jCodigo;
-    public static javax.swing.JTextField jDireccion;
-    public static javax.swing.JTextField jFechaNac;
+    public javax.swing.JButton JBAgregar;
+    public javax.swing.JButton JBConsultar;
+    public javax.swing.JButton JBEliminar;
+    public javax.swing.JButton JBModificar;
+    public javax.swing.JTextField jApellidos;
+    public javax.swing.JTextField jCedula;
+    public javax.swing.JTextField jCodigo;
+    public javax.swing.JTextField jDireccion;
+    public javax.swing.JTextField jFechaNac;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -236,9 +286,9 @@ public class PanelClientes extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
-    public static javax.swing.JTextField jNombres;
+    public javax.swing.JTextField jNombres;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
-    public static javax.swing.JTextField jTelefono;
+    public javax.swing.JTable jTable1;
+    public javax.swing.JTextField jTelefono;
     // End of variables declaration//GEN-END:variables
 }

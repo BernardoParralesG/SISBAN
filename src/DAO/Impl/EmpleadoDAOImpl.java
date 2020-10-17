@@ -18,7 +18,7 @@ import java.util.logging.Logger;
 public class EmpleadoDAOImpl extends Conexion implements EmpleadoDAO{
 
     @Override
-    public void insertar(Empleado a) throws DAOException {
+    public boolean insertar(Empleado a){
         boolean val = false;
         Connection cn = null;
         Statement stn = null;
@@ -36,10 +36,11 @@ public class EmpleadoDAOImpl extends Conexion implements EmpleadoDAO{
         } catch (Exception ex) {
             Logger.getLogger(ClienteDAOImpl.class.getName()).log(Level.SEVERE, null, ex);
         }
+        return val;
     }
 
     @Override
-    public void modificar(Empleado a) throws DAOException {
+    public boolean modificar(Empleado a){
         boolean val = false;
         Connection cn = null;
         Statement st = null;
@@ -59,10 +60,11 @@ public class EmpleadoDAOImpl extends Conexion implements EmpleadoDAO{
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(ClienteDAOImpl.class.getName()).log(Level.SEVERE, null, ex);
         }
+        return val;
     }
 
     @Override
-    public void eliminar(Empleado a) throws DAOException {
+    public boolean eliminar(Empleado a){
         boolean val = false;
         Connection cn = null;
         Statement st = null;
@@ -77,10 +79,11 @@ public class EmpleadoDAOImpl extends Conexion implements EmpleadoDAO{
         } catch (Exception e) {
             
         }
+        return val;
     }
 
     @Override
-    public List<Empleado> obtenerTodos() throws DAOException {
+    public List<Empleado> obtenerTodos(){
         List<Empleado> listDep = new ArrayList<>();
         Connection cn = null;
         Statement stn = null;

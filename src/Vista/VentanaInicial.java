@@ -4,7 +4,7 @@ public class VentanaInicial extends javax.swing.JFrame{
 
     public VentanaInicial() {
         initComponents();
-        setSize(440,590);     
+        setSize(440,590);  
     }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents

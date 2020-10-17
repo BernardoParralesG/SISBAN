@@ -18,9 +18,10 @@ import javax.swing.JOptionPane;
 public class UsuarioDAOImpl extends Conexion implements UsuarioDAO {
 
     @Override
-    public void insertar(Usuarios a) throws DAOException {
+    public boolean insertar(Usuarios a){
         Connection cn = null;
         Statement stn = null;
+        boolean val=false;
         String sql = "Insert into USUARIOS values (" + a.getCod_usu() + "," + a.getEmpleado() + ",'"
                 + a.getNombre() + "','" + a.getContrasena() + "'," + a.getNivel_acceso() + ")";
         try {
@@ -28,15 +29,18 @@ public class UsuarioDAOImpl extends Conexion implements UsuarioDAO {
             con = this.getCon();
             stn = con.createStatement();
             stn.execute(sql);
+            val=true;
         } catch (Exception ex) {
             Logger.getLogger(ClienteDAOImpl.class.getName()).log(Level.SEVERE, null, ex);
         }
+        return val;
     }
 
     @Override
-    public void modificar(Usuarios a) throws DAOException {
+    public boolean modificar(Usuarios a){
         Connection cn = null;
         Statement st = null;
+        boolean val=false;
         String sql = "update USUARIOS set COD_USU=" + a.getCod_usu() + ",EMPLEADO=" + a.getEmpleado() + ",NOMBRE='"
                 + a.getNombre() + "',CONTRASENA='" + a.getContrasena() + "',NIVEL_ACCESO=" + a.getNivel_acceso() + " where COD_USU=" + a.getCod_usu();
         try {
@@ -45,17 +49,20 @@ public class UsuarioDAOImpl extends Conexion implements UsuarioDAO {
             st = cn.createStatement();
             st.execute(sql);
             st.close();
+            val=true;
         } catch (SQLException ex) {
             Logger.getLogger(CuentaDAOImpl.class.getName()).log(Level.SEVERE, null, ex);
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(CuentaDAOImpl.class.getName()).log(Level.SEVERE, null, ex);
         }
+        return val;
     }
 
     @Override
-    public void eliminar(Usuarios a) throws DAOException {
+    public boolean eliminar(Usuarios a){
         Connection cn = null;
         Statement st = null;
+        boolean val=false;
         String sql = "DELETE FROM USUARIOS where COD_USU= " + a.getCod_usu();
         try {
             this.conectar(); //1 sola vez
@@ -63,13 +70,15 @@ public class UsuarioDAOImpl extends Conexion implements UsuarioDAO {
             st = cn.createStatement();
             st.execute(sql);
             st.close();
+            val=true;
         } catch (Exception e) {
 
         }
+        return val;
     }
 
     @Override
-    public List<Usuarios> obtenerTodos() throws DAOException {
+    public List<Usuarios> obtenerTodos(){
         List<Usuarios> listDep = new ArrayList<>();
         Connection cn = null;
         Statement stn = null;

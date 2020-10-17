@@ -15,7 +15,7 @@ public class Conexion {
     
     public void conectar() throws ClassNotFoundException, SQLException{
         try{
-            String url = "jdbc:oracle:thin:@localhost:1521:XE";
+            String url = "jdbc:oracle:thin:@DESKTOP-M2DQEAJ:1521:XE";
             Class.forName("oracle.jdbc.driver.OracleDriver");
             con = DriverManager.getConnection(url,"adminsb","admin");
         }

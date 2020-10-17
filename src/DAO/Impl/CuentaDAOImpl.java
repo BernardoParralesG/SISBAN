@@ -23,8 +23,9 @@ import java.util.logging.Logger;
 public class CuentaDAOImpl extends Conexion implements CuentaDAO {
 
     @Override
-    public void insertar(Cuenta a) throws DAOException {
+    public boolean insertar(Cuenta a){
         Connection cn = null;
+        boolean val=false;
         Statement stn = null;
         String sql = "Insert into CUENTA values (" + a.getCod_cuenta()+ "," + a.getCliente()+ ",'" 
                 + a.getTipo()+ "','" + a.getEstado()+"',"+a.getSaldo_contable()+","+a.getSaldo_disponible()+ ")";
@@ -33,15 +34,18 @@ public class CuentaDAOImpl extends Conexion implements CuentaDAO {
             con = this.getCon();
             stn = con.createStatement();
             stn.execute(sql);
+            val=true;
         } catch (Exception ex) {
             Logger.getLogger(ClienteDAOImpl.class.getName()).log(Level.SEVERE, null, ex);
         }
+        return val;
     }
 
     @Override
-    public void modificar(Cuenta a) throws DAOException {
+    public boolean modificar(Cuenta a){
         Connection cn = null;
         Statement st = null;
+        boolean val=false;
         String sql = "update CUENTA set COD_CUENTA=" + a.getCod_cuenta()+ ",CLIENTE=" + a.getCliente()+ ",TIPO='" 
                 + a.getTipo()+ "',ESTADO='" + a.getEstado()+"',SALDO_CONTABLE="+a.getSaldo_contable()
                 +",SALDO_DISPONIBLE="+a.getSaldo_disponible()+ "where COD_CUENTA="+a.getCod_cuenta();
@@ -52,31 +56,36 @@ public class CuentaDAOImpl extends Conexion implements CuentaDAO {
             st = cn.createStatement();
             st.execute(sql);
             st.close();
+            val=true;
         } catch (SQLException ex) {
             Logger.getLogger(CuentaDAOImpl.class.getName()).log(Level.SEVERE, null, ex);
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(CuentaDAOImpl.class.getName()).log(Level.SEVERE, null, ex);
         }
+        return val;
     }
 
     @Override
-    public void eliminar(Cuenta a) throws DAOException {
+    public boolean eliminar(Cuenta a){
         Connection cn = null;
         Statement st = null;
+        boolean val=false;
         String sql = "DELETE FROM CUENTA where COD_CUENTA= " + a.getCod_cuenta();
         try {
             this.conectar(); //1 sola vez
             cn = this.getCon();
             st = cn.createStatement();
             st.execute(sql);
+            val=true;
             st.close();
         } catch (Exception e) {
             
         }
+        return val;
     }
 
     @Override
-    public List<Cuenta> obtenerTodos() throws DAOException {
+    public List<Cuenta> obtenerTodos(){
         List<Cuenta> listDep = new ArrayList<>();
         Connection cn = null;
         Statement stn = null;

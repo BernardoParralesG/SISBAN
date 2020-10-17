@@ -15,10 +15,8 @@ public class Controlador implements ActionListener{
     @Override
     public void actionPerformed(ActionEvent a) {
         Object boton = a.getSource();
-        if (boton.equals(vent.JBtnIngreso)) {
-            VLogin obj = new VLogin ();
-            obj.setLocationRelativeTo(null);
-            obj.setVisible(true);
+        if (boton.equals(vent.JBtnIngreso)) {   
+            ControladorUsuario cu = new ControladorUsuario();
         }
     }
 }

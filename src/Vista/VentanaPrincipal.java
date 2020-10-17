@@ -1,19 +1,10 @@
 package Vista;
-import Vista.Paneles.Nivel0.*;
-import Vista.Paneles.Nivel1.*;
-import Vista.Paneles.Nivel2.*;
-import javax.swing.JPanel;
-public class VentanaPrincipal extends javax.swing.JFrame {
 
-    PanelClientes pn=new PanelClientes();
-    PanelAdministrador pa = new PanelAdministrador();
-    PanelTransacciones pt = new PanelTransacciones();
+import javax.swing.JPanel;
+
+public class VentanaPrincipal extends javax.swing.JFrame {
     public VentanaPrincipal() {
         initComponents();
-    }
-
-    private void definirPanel(JPanel pn){
-        scroll.setViewportView(pn);
     }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -76,17 +67,19 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+    public void definirPanel(JPanel pn){
+        scroll.setViewportView(pn);
+    }
     private void jmenuClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmenuClientesActionPerformed
-        definirPanel(pn);
+
     }//GEN-LAST:event_jmenuClientesActionPerformed
 
     private void JTransaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JTransaActionPerformed
-        definirPanel(pt);
+
     }//GEN-LAST:event_JTransaActionPerformed
 
     private void JAdministradorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JAdministradorActionPerformed
-         definirPanel(pa);
+
     }//GEN-LAST:event_JAdministradorActionPerformed
 
     /**
@@ -126,11 +119,11 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenu JAdministrador;
-    private javax.swing.JMenuItem JTransa;
-    private javax.swing.JMenuItem JUser;
+    public javax.swing.JMenuItem JTransa;
+    public javax.swing.JMenuItem JUser;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jmenuClientes;
-    private javax.swing.JMenu menuCuentas;
+    public javax.swing.JMenuItem jmenuClientes;
+    public javax.swing.JMenu menuCuentas;
     private javax.swing.JScrollPane scroll;
     // End of variables declaration//GEN-END:variables
 }
